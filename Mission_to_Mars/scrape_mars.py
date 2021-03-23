@@ -1,5 +1,4 @@
 import pandas as pd
-import requests
 import time
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
@@ -39,7 +38,7 @@ def scrape():
     soup = bs(html, "html.parser")
 
     # Get the photo link for full size jpeg image
-    mars_image_path = soup.find_all('a', class='showimg fancybox-thumbs')['href']
+    mars_image_path = soup.find_all('a', {'class':'showimg fancybox-thumbs'})['href']
     mars_img = url + relative_image_path
 
     browser.quit()
@@ -59,15 +58,17 @@ def scrape():
 
     hemisphere_image_urls = [
     {"title": "Valles Marineris Hemisphere", "img_url": f"{valles}"},
-    {"title": "Cerberus Hemisphere", "img_url": f"{cerberus}"}},
-    {"title": "Schiaparelli Hemisphere", "img_url": f"{schiaparelli}"}},
-    {"title": "Syrtis Major Hemisphere", "img_url": f"{syrtis}"}},
-    ]
+    {"title": "Cerberus Hemisphere", "img_url": f"{cerberus}"},
+    {"title": "Schiaparelli Hemisphere", "img_url": f"{schiaparelli}"},
+    {"title": "Syrtis Major Hemisphere", "img_url": f"{syrtis}"}
+                            ]
 
     dict = {
         'title': f'{title}',
         'body' : f'{body}',
         'mars_img' : f'{mars_img}'
-        'html' : f'{df_html}'
+        'table' : f'{df_html}'
         'hemisphere_image_urls' : f'{hemisphere_image_urls}'
         }
+
+    return dict

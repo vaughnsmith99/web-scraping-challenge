@@ -37,9 +37,14 @@ def scrape():
     html = browser.html
     soup = bs(html, "html.parser")
 
-    # Get the photo link for full size jpeg image
-    mars_image_path = soup.find_all('a', {'class':'showimg fancybox-thumbs'})['href']
-    mars_img = url + relative_image_path
+    #Mars image 
+    url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars2.jpg'
+    browser.visit(url)
+
+    # Scrape page into Soup
+    html = browser.html
+    soup = bs(html, "html.parser")
+    mars_img= soup.find_all('img')['src']
 
     browser.quit()
 

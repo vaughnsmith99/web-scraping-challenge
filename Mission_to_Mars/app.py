@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Use PyMongo to establish Mongo connection
 mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
-
+@app.route("/")
 def home():
 
     # Find one record of data from the mongo database
@@ -30,5 +30,4 @@ def scrape():
     return redirect("/")
 
 if __name__ == "__main__":
-    app.debug = True
-    app.run(host = '0.0.0.0', port=5000)
+    app.run(debug=True)

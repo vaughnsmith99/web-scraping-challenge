@@ -1,12 +1,13 @@
 import pandas as pd
 import time
 from splinter import Browser
+from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup as bs
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
-    executable_path = {"executable_path": "chromedriver.exe"}
+    executable_path = {"executable_path": ChromeDriverManager().install()}
     return Browser("chrome", **executable_path, headless=False)
 
 def scrape():

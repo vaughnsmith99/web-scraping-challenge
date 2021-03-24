@@ -72,8 +72,8 @@ def scrape():
     dict = {
         'title': f'{title}',
         'body' : f'{body}',
-        'mars_img' : f'{mars_img}'
-        'table' : f'{df_html}'
+        'mars_img' : f'{mars_img}',
+        'table' : f'{df_html}',
         'hemisphere_image_urls' : f'{hemisphere_image_urls}'
         }
 

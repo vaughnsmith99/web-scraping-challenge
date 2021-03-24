@@ -46,7 +46,7 @@ def scrape():
     # Scrape page into Soup
     html = browser.html
     soup = bs(html, "html.parser")
-    mars_img= soup.find_all('img')['src']
+    mars_img= soup.find_all('img')[0]
 
     browser.quit()
 
@@ -64,10 +64,10 @@ def scrape():
     syrtis = 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif'
 
     hemisphere_image_urls = [
-    {"title": "Valles Marineris Hemisphere", "img_url": f"{valles}"},
-    {"title": "Cerberus Hemisphere", "img_url": f"{cerberus}"},
-    {"title": "Schiaparelli Hemisphere", "img_url": f"{schiaparelli}"},
-    {"title": "Syrtis Major Hemisphere", "img_url": f"{syrtis}"}
+    {"title": "Valles Marineris Hemisphere", "img_url": valles},
+    {"title": "Cerberus Hemisphere", "img_url": cerberus},
+    {"title": "Schiaparelli Hemisphere", "img_url": schiaparelli},
+    {"title": "Syrtis Major Hemisphere", "img_url": syrtis}
                             ]
 
     dict = {
